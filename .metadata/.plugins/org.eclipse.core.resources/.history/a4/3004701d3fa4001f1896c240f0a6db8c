@@ -1,0 +1,26 @@
+/*
+ * fsm_automatic.c
+ *
+ *  Created on: Nov 15, 2024
+ *      Author: TIEN DUY
+ */
+
+#include "fsm_automatic.h"
+
+void fsm_automatic_run(){
+	switch (status){
+		case INIT:
+			HAL_GPIO_WritePin(GPIOx, GPIO_Pin, PinState)
+			status =  AUTO_RED;
+			setTimer1(500);
+			break;
+		case AUTO_RED:
+			break;
+		case AUTO_GREEN:
+			break;
+		case AUTO_YELLOW:
+			break;
+		default:
+			break;
+	}
+}
