@@ -10,10 +10,9 @@
 
 #include "main.h"
 
-#define RED_GREEN 11
-#define RED_YELLOW 12
-#define GREEN_RED 13
-#define YELLOW_RED 14
+#define RED_LIGHT 11
+#define GREEN_LIGHT 12
+#define YELLOW_LIGHT 13
 
 void traffic_light(int status_light);
 #endif /* INC_TRAFFIC_LIGHT_H_ */

@@ -9,7 +9,7 @@
 
 void traffic_light(int status_light) {
 	switch (status_light) {
-	case RED_GREEN:
+	case RED_LIGHT:
 
 	}
 }
