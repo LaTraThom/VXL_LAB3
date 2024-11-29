@@ -8,12 +8,7 @@
 #ifndef INC_TRAFFIC_LIGHT_H_
 #define INC_TRAFFIC_LIGHT_H_
 
-#include "main.h"
-
-#define RED_GREEN 11
-#define RED_YELLOW 12
-#define GREEN_RED 13
-#define YELLOW_RED 14
+#include "global.h"
 
 void traffic_light(int status_light);
 #endif /* INC_TRAFFIC_LIGHT_H_ */

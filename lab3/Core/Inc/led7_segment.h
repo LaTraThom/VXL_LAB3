@@ -8,6 +8,9 @@
 #ifndef INC_LED7_SEGMENT_H_
 #define INC_LED7_SEGMENT_H_
 
+#include "global.h"
 
+void display7SEG(int num);
+void led7_segment();
 
 #endif /* INC_LED7_SEGMENT_H_ */

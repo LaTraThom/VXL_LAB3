@@ -1,0 +1,18 @@
+/*
+ * led7_segment.h
+ *
+ *  Created on: Nov 15, 2024
+ *      Author: TIEN DUY
+ */
+
+#ifndef INC_LED7_SEGMENT_H_
+#define INC_LED7_SEGMENT_H_
+
+#include "global.h"
+extern int timelane1;
+extern int timelane2;
+
+void display7SEG(int num);
+void led7_segment(int status_led);
+
+#endif /* INC_LED7_SEGMENT_H_ */

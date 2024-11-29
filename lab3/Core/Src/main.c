@@ -23,7 +23,10 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "software_timer.h"
-#include "button.h"
+#include "global.h"
+#include "fsm_automatic.h"
+#include "fsm_manual.h"
+#include "fsm_setting.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -99,7 +102,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+	  fsm_automatic();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -205,9 +208,9 @@ static void MX_GPIO_Init(void)
                           |LED_9_YELLOW_Pin|LED_10_RED_Pin|LED_11_GREEN_Pin|LED_12_YELLOW_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, EN0_Pin|EN1_Pin|EN2_Pin|SEG_6_Pin
-                          |EN3_Pin|SEG_0_Pin|SEG_1_Pin|SEG_2_Pin
-                          |SEG_3_Pin|SEG_4_Pin|SEG_5_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, EN0_Pin|EN1_Pin|EN2_Pin|SEG6_Pin
+                          |GPIO_PIN_11|EN3_Pin|SEG0_Pin|SEG1_Pin
+                          |SEG2_Pin|SEG3_Pin|SEG4_Pin|SEG5_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : BUTTON_1_Pin BUTTON_2_Pin BUTTON_3_Pin */
   GPIO_InitStruct.Pin = BUTTON_1_Pin|BUTTON_2_Pin|BUTTON_3_Pin;
@@ -226,12 +229,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : EN0_Pin EN1_Pin EN2_Pin SEG_6_Pin
-                           EN3_Pin SEG_0_Pin SEG_1_Pin SEG_2_Pin
-                           SEG_3_Pin SEG_4_Pin SEG_5_Pin */
-  GPIO_InitStruct.Pin = EN0_Pin|EN1_Pin|EN2_Pin|SEG_6_Pin
-                          |EN3_Pin|SEG_0_Pin|SEG_1_Pin|SEG_2_Pin
-                          |SEG_3_Pin|SEG_4_Pin|SEG_5_Pin;
+  /*Configure GPIO pins : EN0_Pin EN1_Pin EN2_Pin SEG6_Pin
+                           PB11 EN3_Pin SEG0_Pin SEG1_Pin
+                           SEG2_Pin SEG3_Pin SEG4_Pin SEG5_Pin */
+  GPIO_InitStruct.Pin = EN0_Pin|EN1_Pin|EN2_Pin|SEG6_Pin
+                          |GPIO_PIN_11|EN3_Pin|SEG0_Pin|SEG1_Pin
+                          |SEG2_Pin|SEG3_Pin|SEG4_Pin|SEG5_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
