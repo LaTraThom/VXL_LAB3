@@ -27,6 +27,14 @@
 #define RED_YELLOW 12
 #define GREEN_RED 13
 #define YELLOW_RED 14
+#define RED_MODIFY 15
+#define YELLOW_MODIFY 16
+#define GREEN_MODIFY 17
+
+#define MODE_NORMAL 21
+#define MODE_RED_MODIFY 22
+#define MODE_YELLOW_MODIFY 23
+#define MODE_GREEN_MODIFY 24
 
 extern int RED_TIME;
 extern int YELLOW_TIME;
@@ -35,4 +43,8 @@ extern int status;
 extern int time_lane1;
 extern int time_lane2;
 extern int index_led;
+extern int MODE;
+extern int RED_TIME_MODIFY;
+extern int YELLOW_TIME_MODIFY;
+extern int GREEN_TIME_MODIFY;
 #endif /* INC_GLOBAL_H_ */

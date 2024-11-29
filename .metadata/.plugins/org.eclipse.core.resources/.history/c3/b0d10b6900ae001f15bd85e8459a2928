@@ -1,0 +1,27 @@
+/*
+ * fsm_manual.c
+ *
+ *  Created on: Nov 15, 2024
+ *      Author: TIEN DUY
+ */
+
+#include "global.h"
+int MODE = MODE_NORMAL;
+void fsm_manual() {
+	if (isButton1Pressed() && MODE == MODE_NORMAL) {
+		traffic_light(RED_MODIFY);
+		MODE = MODE_RED_MODIFY;
+	}
+	if (isButton1Pressed() && MODE == MODE_RED_MODIFY) {
+		traffic_light(YELLOW_MODIFY);
+		MODE = MODE_YELLOW_MODIFY;
+	}
+	if (isButton1Pressed() && MODE == MODE_YELLOW_MODIFY) {
+		traffic_light(GREEN_MODIFY);
+		MODE = MODE_GREEN_MODIFY;
+	}
+	if (isButton1Pressed() && MODE == MODE_GREEN_MODIFY) {
+		MODE = MODE_NORMAL;
+		status = INIT;
+	}
+}

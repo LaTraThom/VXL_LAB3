@@ -9,6 +9,7 @@
 #include "global.h"
 int time_lane1;
 int time_lane2;
+int index_led = 0;
 extern int RED_TIME;
 extern int GREEN_TIME;
 extern int YELLOW_TIME;
@@ -108,7 +109,6 @@ void display7SEG(int num) {
 }
 
 void led7_segment() {
-	int index_led = 0;
     led_buffer[0] = time_lane1 / 10;
     led_buffer[1] = time_lane1 % 10;
     led_buffer[2] = time_lane2 / 10;
@@ -151,6 +151,6 @@ void led7_segment() {
  		  if (index_led > 3) {
  			  index_led = 0;
  		  }
- 		  setTimer3(100);
+ 		  setTimer3(50);
        }
    }
