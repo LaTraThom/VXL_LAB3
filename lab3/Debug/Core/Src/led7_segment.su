@@ -1,3 +1,3 @@
-led7_segment.c:19:6:display7SEG	16	static
-led7_segment.c:112:6:led7_segment	8	static
-led7_segment.c:159:6:display_modify	24	static
+led7_segment.c:18:6:display7SEG	16	static
+led7_segment.c:111:6:led7_segment	8	static
+led7_segment.c:158:6:display_modify	24	static
