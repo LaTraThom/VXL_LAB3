@@ -10,11 +10,12 @@
 int time_lane1;
 int time_lane2;
 int index_led = 0;
+int index_led_manual = 0;
 extern int RED_TIME;
 extern int GREEN_TIME;
 extern int YELLOW_TIME;
 int led_buffer[4] = {1,2,3,4};
-
+int led_buffer1[2] = {1,2};
 void display7SEG(int num) {
 	if (num == 0) {
 		HAL_GPIO_WritePin(SEG0_GPIO_Port, SEG0_Pin, RESET);
@@ -151,6 +152,36 @@ void led7_segment() {
  		  if (index_led > 3) {
  			  index_led = 0;
  		  }
- 		  setTimer3(50);
+ 		  setTimer3(75);
        }
    }
+
+void display_modify(int value) {
+    int digit_high = (value / 1000) / 10;
+    int digit_low = (value / 1000) % 10;
+    if (timer4_flag == 1) {
+        switch (index_led_manual) {
+            case 0:
+                HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, RESET);
+                HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
+                HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
+                HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
+                display7SEG(digit_high);
+                break;
+            case 1:
+                HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
+                HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, RESET);
+                HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
+                HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
+                display7SEG(digit_low);
+                break;
+            default:
+                break;
+        }
+        index_led_manual++;
+        if (index_led_manual > 1) {
+            index_led_manual = 0;
+        }
+        setTimer4(100);
+    }
+}

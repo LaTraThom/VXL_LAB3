@@ -32,7 +32,7 @@ void fsm_automatic(){
 	        time_lane2 = GREEN_TIME / 1000;
 			setTimer1(GREEN_TIME);
 			setTimer2(1000);
-			setTimer3(50);
+			setTimer3(75);
 			break;
 		case AUTO_RED_GREEN:
 			traffic_light(RED_GREEN);
@@ -43,13 +43,13 @@ void fsm_automatic(){
 	        	time_lane2--;
 	        	setTimer2(1000);
 	        }
-			if (timer1_flag == 1 && time_lane2 == 0) {
+			if (timer1_flag == 1 && time_lane2 < 0) {
 				timer1_flag = 0;
 				status = AUTO_RED_YELLOW;
 		        time_lane2 = YELLOW_TIME / 1000;
 				setTimer1(YELLOW_TIME);
 				setTimer2(1000);
-				setTimer3(50);
+				setTimer3(75);
 			}
 			break;
 		case AUTO_RED_YELLOW:
@@ -61,14 +61,14 @@ void fsm_automatic(){
 	        	time_lane2--;
 	        	setTimer2(1000);
 	        }
-			if (timer1_flag == 1 && time_lane1 == 0) {
+			if (timer1_flag == 1 && time_lane2 < 0) {
 				timer1_flag = 0;
 				status = AUTO_GREEN_RED;
 		        time_lane1 = GREEN_TIME / 1000;
 		        time_lane2 = RED_TIME / 1000;
 				setTimer1(GREEN_TIME);
 				setTimer2(1000);
-				setTimer3(50);
+				setTimer3(75);
 			}
 			break;
 		case AUTO_GREEN_RED:
@@ -80,13 +80,13 @@ void fsm_automatic(){
 	        	time_lane2--;
 	        	setTimer2(1000);
 	        }
-			if (timer1_flag == 1 && time_lane1 == 0) {
+			if (timer1_flag == 1 && time_lane1 < 0) {
 				timer1_flag = 0;
 				status = AUTO_YELLOW_RED;
 		        time_lane1 = YELLOW_TIME / 1000;
 				setTimer1(YELLOW_TIME);
 				setTimer2(1000);
-				setTimer3(50);
+				setTimer3(75);
 			}
 			break;
 		case AUTO_YELLOW_RED:
@@ -98,14 +98,14 @@ void fsm_automatic(){
 	        	time_lane2--;
 	        	setTimer2(1000);
 	        }
-			if (timer1_flag == 1 && time_lane2 == 0) {
+			if (timer1_flag == 1 && time_lane1 < 0) {
 				timer1_flag = 0;
 				status = AUTO_RED_GREEN;
 		        time_lane1 = RED_TIME / 1000;
 		        time_lane2 = GREEN_TIME / 1000;
 				setTimer1(GREEN_TIME);
 				setTimer2(1000);
-				setTimer3(50);
+				setTimer3(75);
 			}
 			break;
 		default:

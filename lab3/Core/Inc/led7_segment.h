@@ -12,5 +12,6 @@
 
 void display7SEG(int num);
 void led7_segment();
+void display_modify();
 
 #endif /* INC_LED7_SEGMENT_H_ */

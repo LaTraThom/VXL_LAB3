@@ -1,0 +1,83 @@
+/*
+ * fsm_manual.c
+ *
+ *  Created on: Nov 15, 2024
+ *      Author: TIEN DUY
+ */
+
+#include "global.h"
+int MODE = MODE_NORMAL;
+int index_led_manual = 0;
+
+void display_modify(int value) {
+    int digit_high = (value / 1000) / 10;
+    int digit_low = (value / 1000) % 10;
+    if (timer4_flag == 1) {
+    	timer4_flag = 0;
+        switch (index_led_manual) {
+            case 0:
+                HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, RESET);
+                HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
+                HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
+                HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
+                display7SEG(digit_high);
+                break;
+
+            case 1:
+                HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
+                HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, RESET);
+                HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
+                HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
+                display7SEG(digit_low);
+                break;
+
+            default:
+                break;
+        }
+
+        index_led_manual++;
+        if (index_led_manual > 1) {
+            index_led_manual = 0;
+        }
+        setTimer4(25);
+    }
+}
+void fsm_manual() {
+    if (isButton1Pressed()) {
+    	 printf("Button pressed. Current MODE: %d\n", MODE);
+        switch (MODE) {
+            case MODE_NORMAL:
+                MODE = MODE_RED_MODIFY;
+                RED_TIME_MODIFY = RED_TIME;
+                traffic_light(RED_MODIFY);
+                break;
+            case MODE_RED_MODIFY:
+                MODE = MODE_YELLOW_MODIFY;
+                YELLOW_TIME_MODIFY = YELLOW_TIME;
+                traffic_light(YELLOW_MODIFY);
+                break;
+            case MODE_YELLOW_MODIFY:
+                MODE = MODE_GREEN_MODIFY;
+                GREEN_TIME_MODIFY = GREEN_TIME;
+                traffic_light(GREEN_MODIFY);
+                break;
+            case MODE_GREEN_MODIFY:
+                MODE = MODE_NORMAL;
+                break;
+        }
+    }
+
+    switch (MODE) {
+        case MODE_RED_MODIFY:
+        	display_modify(10000);
+            break;
+        case MODE_YELLOW_MODIFY:
+        	display_modify(YELLOW_TIME_MODIFY);
+            break;
+        case MODE_GREEN_MODIFY:
+        	display_modify(GREEN_TIME_MODIFY);
+            break;
+        default:
+            break;
+    }
+}

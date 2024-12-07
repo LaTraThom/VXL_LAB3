@@ -6,9 +6,6 @@
  */
 
 #include "global.h"
-int RED_TIME_MODIFY;
-int YELLOW_TIME_MODIFY;
-int GREEN_TIME_MODIFY;
 
 void fsm_setting() {
 	switch (MODE) {

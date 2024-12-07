@@ -22,6 +22,7 @@
 #define AUTO_RED_YELLOW 3
 #define AUTO_GREEN_RED 4
 #define AUTO_YELLOW_RED 5
+#define MODIFY 6
 
 #define RED_GREEN 11
 #define RED_YELLOW 12
