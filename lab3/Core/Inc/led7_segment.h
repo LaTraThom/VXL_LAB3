@@ -11,6 +11,7 @@
 #include "global.h"
 
 void display7SEG(int num);
+void update_buffer();
 void led7_segment();
 void display_modify();
 

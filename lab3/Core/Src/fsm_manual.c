@@ -19,17 +19,17 @@ void fsm_manual() {
             	status = MODIFY;
                 MODE = MODE_RED_MODIFY;
                 traffic_light(RED_MODIFY);
-                setTimer4(125);
+                setTimer4(250);
                 break;
             case MODE_RED_MODIFY:
                 MODE = MODE_YELLOW_MODIFY;
                 traffic_light(YELLOW_MODIFY);
-                setTimer4(125);
+                setTimer4(250);
                 break;
             case MODE_YELLOW_MODIFY:
                 MODE = MODE_GREEN_MODIFY;
                 traffic_light(GREEN_MODIFY);
-                setTimer4(125);
+                setTimer4(250);
                 break;
             case MODE_GREEN_MODIFY:
                 MODE = MODE_NORMAL;
